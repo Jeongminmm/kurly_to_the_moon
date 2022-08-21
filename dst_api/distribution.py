@@ -7,7 +7,7 @@ def getRegion(shape,weight): #weight format : (x_cord,y_cord,weight)
     return regionList
 
 def getRegion_test(max_weight):
-    tst_regionList = np.random.rand(14,12) * max_weight
+    tst_regionList = np.random.rand(6,7) * max_weight
 
     return tst_regionList
 
@@ -48,7 +48,13 @@ def setMidRegion(driverNum,shape):
                 for j in range(minDispose):
                     midRegion.append((maxCord[maxDispose-i-1],minDisposeMinCord[j]))
         else:
-            print("max index is y")
+            #print("max index is y")
+            for i in range(maxDisposeNum):
+                for j in range(maxDispose):
+                    midRegion.append((maxDisposeMinCord[j],maxCord[i]))
+            for i in range(math.trunc(driverNum//minDispose)-maxDisposeNum):
+                for j in range(minDispose):
+                    midRegion.append((minDisposeMinCord[j],maxCord[maxDispose-i-1]))
 
     return midRegion
 
@@ -56,6 +62,6 @@ if __name__ == '__main__':
     print("distribution code")
     tst_regionList = getRegion_test(100)
 
-    midRegion = setMidRegion(7,tst_regionList.shape)
+    midRegion = setMidRegion(5,tst_regionList.shape)
     print(midRegion)
     print(len(midRegion))
