@@ -73,6 +73,22 @@ def change_region(new_driver,before_driver,target_x,target_y):
     weight[before_driver-1]= weight[before_driver-1]-we
     weight[new_driver-1]=weight[new_driver-1]+we
 
+def small_driver(driver,big_driver,region_x,region_y):
+    dr=[0]*driver
+    for i in range(region_y):
+        for j in range(region_x):
+            if(d_region[i][j]==big_driver):
+                print(i,j,d_region[i][j])
+                if check(i+1,j):
+                    dr[d_region[i+1][j]-1]=1
+                if check(i,j+1):
+                    dr[d_region[i][j+1]-1]=1
+                if check(i-1,j):
+                    dr[d_region[i-1][j]-1]=1
+                if check(i,j-1):
+                    dr[d_region[i][j-1]-1]=1
+    dr[big_driver-1]=0
+    return dr
 if __name__ == '__main__':
     region_driver = [[0 for col in range(7)] for row in range(6)]
     region_weight = [[0 for col in range(7)] for row in range(6)]
@@ -91,7 +107,7 @@ if __name__ == '__main__':
     d_wegion=finddriver_weight(driver,tst_regionList,d_region)
     print(weight)
     change_region(1,2,4,3)
-    #print(tst_regionList[3][4])
-    #pprint(region_driver)
+    pprint(d_region)
+    sd=small_driver(driver,3,region_x,region_y)
     #print(weight)
     #print(len(midRegion))
