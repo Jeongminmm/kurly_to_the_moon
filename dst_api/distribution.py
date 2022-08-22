@@ -1,8 +1,10 @@
 import math
+import dst_search as sch
 
 import numpy as np
 
 def getRegion(shape,weight): #weight format : (x_cord,y_cord,weight)
+    conn = sch.db_connect()
     regionList = np.array()
     return regionList
 
@@ -62,6 +64,6 @@ if __name__ == '__main__':
     print("distribution code")
     tst_regionList = getRegion_test(100)
 
-    midRegion = setMidRegion(5,tst_regionList.shape)
+    midRegion = setMidRegion(6,tst_regionList.shape)
     print(midRegion)
     print(len(midRegion))
