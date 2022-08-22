@@ -1,6 +1,5 @@
 import math
 import dst_search as sch
-
 import numpy as np
 
 def getRegion(): #weight format : (x_cord,y_cord,weight)
