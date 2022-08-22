@@ -9,11 +9,11 @@ def getRegion(): #weight format : (x_cord,y_cord,weight)
     cursor = conn.cursor(buffered=True)
     cursor.execute(sql)
     res_list = cursor.fetchall()
-    regionList = np.array(res_list[-1][0],res_list[-1][1])
+    print(int(res_list[-1][0]),int(res_list[-1][1]))
+    regionList = np.ndarray((int(res_list[-1][0]),int(res_list[-1][1])))
     for res in res_list:
-        print(regionList((res[0]-1),(res[1]-1)))
-
-
+        regionList[res[0]-1][res[1]-1] = res[2]
+    print(regionList)
     return regionList
 
 def getRegion_test(max_weight):
@@ -47,7 +47,7 @@ def setMidRegion(driverNum,shape):
             minDisposeMinCord.append(minInterval//2 + minInterval*(i))
 
         maxDisposeNum = driverNum%minDispose
-        print(maxDispose,driverNum%maxDispose,minDispose)
+        #print(maxDispose,driverNum%maxDispose,minDispose)
         midRegion = list()
         count = 0
         if maxIndex==0:
@@ -73,5 +73,5 @@ if __name__ == '__main__':
     tst_regionList = getRegion_test(100)
     regionList = getRegion()
     midRegion = setMidRegion(6,tst_regionList.shape)
-    print(midRegion)
-    print(len(midRegion))
+    #print(midRegion)
+    #print(len(midRegion))
