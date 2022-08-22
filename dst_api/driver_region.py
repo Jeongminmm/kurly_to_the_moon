@@ -42,7 +42,7 @@ def findclose_region(i,j,region_x,region_y):
     elif ((j-1)<0 and region_driver[i][j+1]!=0):
         #print(i, j)
         return region_driver[i][j+1]
-    elif ((j+1)>=region_x and region_driver[i][j-1]!=0):
+    elif (j + 1)>=region_x and region_driver[i][j - 1]!=0:
         #print(i, j)
         return region_driver[i][j-1]
     elif ((i-1)<0 and region_driver[i+1][j]!=0):
@@ -76,21 +76,22 @@ def change_region(new_driver,before_driver,target_x,target_y):
 
 if __name__ == '__main__':
     print("distribution code")
-    tst_regionList = dst.getRegion_test(100)
+    tst_regionList = dst.getRegion()
     driver=5
     midRegion = dst.setMidRegion(5,tst_regionList.shape)
     d1 = [int(midRegion[0][0]), int(midRegion[0][1])]
     d2 = [int(midRegion[1][0]), int(midRegion[1][1])]
     d3 = [int(midRegion[2][0]), int(midRegion[2][1])]
     d4 = [int(midRegion[3][0]), int(midRegion[3][1])]
+
     #print(midRegion)
     #pprint(tst_regionList)
     #pprint(midRegion)
     setdriver_region(driver,midRegion)
     finddriver_weight(driver,tst_regionList)
-    print(weight)
+    #print(weight)
     change_region(1,2,4,7)
-    print(tst_regionList[7][4])
+    #print(tst_regionList[7][4])
     pprint(region_driver)
-    print(weight)
-    print(len(midRegion))
+    #print(weight)
+    #print(len(midRegion))
