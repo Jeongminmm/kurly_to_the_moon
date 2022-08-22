@@ -2,17 +2,11 @@ import math
 from pprint import pprint
 import numpy as np
 import distribution as dst
-region_driver = [[0 for col in range(7)] for row in range(6)]
-#print(region_driver)
-region_weight = [[0 for col in range(7)] for row in range(6)]
-region_x = 7
-region_y = 6
-weight=list()
-zero=list()
 def setdriver_region(driver,midRegion):
     min_x=7
     min_y=6
     for i in range(driver):
+        #print(midRegion[i][0],midRegion[i][1],i)
         region_driver[int(midRegion[i][0])][int(midRegion[i][1])]=i+1
         if min_x>midRegion[i][0]:
             min_x=midRegion[i][0]
@@ -34,7 +28,7 @@ def setdriver_region(driver,midRegion):
                 #print(i,j)
                 region_driver[i][j]=findclose_region(i,j,region_x,region_y)
     #pprint(region_driver)    #나눠진 권역
-
+    return region_driver
 
 def check(x,y):
     if(x>=0 and x<region_x):
@@ -63,7 +57,7 @@ def findclose_region(i,j,region_x,region_y):
         elif(region_driver[i-1][j]!=0):
             return region_driver[i-1][j]
 
-def finddriver_weight(driver, tst_regionList):   #초기에 운전자별 가중치 총 합 weight 리스트에 넣음
+def finddriver_weight(driver, tst_regionList,region_driver):   #초기에 운전자별 가중치 총 합 weight 리스트에 넣음
     for i in range(driver):
         wd = 0
         for y in range(region_y):
@@ -71,6 +65,7 @@ def finddriver_weight(driver, tst_regionList):   #초기에 운전자별 가중�
                 if(region_driver[y][x]==i+1):
                     wd+=tst_regionList[y][x]
         weight.append(wd)
+    return weight
 
 
 def change_region(new_driver,before_driver,target_x,target_y):
@@ -81,23 +76,22 @@ def change_region(new_driver,before_driver,target_x,target_y):
 
 
 if __name__ == '__main__':
+    region_driver = [[0 for col in range(7)] for row in range(6)]
+    region_weight = [[0 for col in range(7)] for row in range(6)]
+    region_x = 7
+    region_y = 6
+    weight = list()
+    zero = list()
     print("distribution code")
-    tst_regionList = dst.getRegion_test(100)
-    driver=5
-    midRegion = dst.setMidRegion(5,tst_regionList.shape)
+    tst_regionList = dst.getRegion()
+    driver=4  #운전자 수 설정
+    midRegion = dst.setMidRegion(driver,tst_regionList.shape) #운전자 중심권역 설정
+    d_region=setdriver_region(driver,midRegion)                 #초기 권역 설정
+    pprint(d_region)
     pprint(tst_regionList)
-    d1 = [int(midRegion[0][0]), int(midRegion[0][1])]
-    d2 = [int(midRegion[1][0]), int(midRegion[1][1])]
-    d3 = [int(midRegion[2][0]), int(midRegion[2][1])]
-    d4 = [int(midRegion[3][0]), int(midRegion[3][1])]
-    #print(midRegion)
-    #pprint(tst_regionList)
-    #pprint(midRegion)
-    setdriver_region(driver,midRegion)
-    pprint(region_driver)
-    finddriver_weight(driver,tst_regionList)
+    d_wegion=finddriver_weight(driver,tst_regionList,d_region)
     print(weight)
-    #change_region(1,2,4,3)
+    change_region(1,2,4,3)
     #print(tst_regionList[3][4])
     #pprint(region_driver)
     #print(weight)

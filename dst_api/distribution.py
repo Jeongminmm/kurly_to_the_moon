@@ -9,11 +9,11 @@ def getRegion(): #weight format : (x_cord,y_cord,weight)
     cursor = conn.cursor(buffered=True)
     cursor.execute(sql)
     res_list = cursor.fetchall()
-    print(int(res_list[-1][0]),int(res_list[-1][1]))
+    #print(int(res_list[-1][0]),int(res_list[-1][1]))
     regionList = np.ndarray((int(res_list[-1][0]),int(res_list[-1][1])))
     for res in res_list:
         regionList[res[0]-1][res[1]-1] = res[2]
-    print(regionList)
+    #print(regionList)
     return regionList
 
 def getRegion_test(max_weight):
