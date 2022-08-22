@@ -7,7 +7,7 @@ def getRegion(shape,weight): #weight format : (x_cord,y_cord,weight)
     return regionList
 
 def getRegion_test(max_weight):
-    tst_regionList = np.random.rand(14,10) * max_weight
+    tst_regionList = np.random.rand(6,7) * max_weight
 
     return tst_regionList
 
@@ -18,7 +18,7 @@ def setMidRegion(driverNum,shape):
     else:
         maxDispose = (math.ceil(driverNum**(1/2)))
         if driverNum%maxDispose==0:
-            minDispose = driverNum/maxDispose
+            minDispose = int(driverNum/maxDispose)
         else:
             minDispose = math.trunc(driverNum**(1/2))
         maxInterval = max(shape)//maxDispose
@@ -36,25 +36,32 @@ def setMidRegion(driverNum,shape):
         for i in range(int(minDispose)):
             minDisposeMinCord.append(minInterval//2 + minInterval*(i))
 
-        maxDisposeNum = driverNum%maxDispose
-
+        maxDisposeNum = driverNum%minDispose
+        print(maxDispose,driverNum%maxDispose,minDispose)
         midRegion = list()
         count = 0
         if maxIndex==0:
             for i in range(maxDisposeNum):
                 for j in range(maxDispose):
                     midRegion.append((maxCord[i],maxDisposeMinCord[j]))
-            for i in range(maxDispose-maxDisposeNum):
+            for i in range(math.trunc(driverNum//minDispose)-maxDisposeNum):
                 for j in range(minDispose):
                     midRegion.append((maxCord[maxDispose-i-1],minDisposeMinCord[j]))
         else:
-            print("max index is y")
+            #print("max index is y")
+            for i in range(maxDisposeNum):
+                for j in range(maxDispose):
+                    midRegion.append((maxDisposeMinCord[j],maxCord[i]))
+            for i in range(math.trunc(driverNum//minDispose)-maxDisposeNum):
+                for j in range(minDispose):
+                    midRegion.append((minDisposeMinCord[j],maxCord[maxDispose-i-1]))
 
     return midRegion
 
 if __name__ == '__main__':
     print("distribution code")
     tst_regionList = getRegion_test(100)
-    midRegion = setMidRegion(8,tst_regionList.shape)
+
+    midRegion = setMidRegion(5,tst_regionList.shape)
     print(midRegion)
     print(len(midRegion))
