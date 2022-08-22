@@ -3,16 +3,17 @@ import dst_search as sch
 
 import numpy as np
 
-def getRegion(shape): #weight format : (x_cord,y_cord,weight)
+def getRegion(): #weight format : (x_cord,y_cord,weight)
     conn = sch.db_connect()
     sql = "select * from region_difficulty_sum"
     cursor = conn.cursor(buffered=True)
     cursor.execute(sql)
     res_list = cursor.fetchall()
-    print(res_list)
+    regionList = np.array(res_list[-1][0],res_list[-1][1])
     for res in res_list:
-        print(res[0],res[1])
-    regionList = np.array(shape)
+        print(regionList((res[0]-1),(res[1]-1)))
+
+
     return regionList
 
 def getRegion_test(max_weight):
@@ -70,7 +71,7 @@ def setMidRegion(driverNum,shape):
 if __name__ == '__main__':
     print("distribution code")
     tst_regionList = getRegion_test(100)
-    regionList = getRegion((6,7))
+    regionList = getRegion()
     midRegion = setMidRegion(6,tst_regionList.shape)
     print(midRegion)
     print(len(midRegion))
