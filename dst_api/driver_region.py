@@ -1,61 +1,13 @@
 import math
 from pprint import pprint
 import numpy as np
+import distribution as dst
 region_driver = [[0 for col in range(7)] for row in range(6)]
 #print(region_driver)
 region_weight = [[0 for col in range(7)] for row in range(6)]
 region_x = 7
 region_y = 6
 weight=list()
-def getRegion(shape,weight): #weight format : (x_cord,y_cord,weight)
-    regionList = np.array()
-    return regionList
-
-def getRegion_test(max_weight):
-    tst_regionList = np.random.rand(7,6) * max_weight
-    #print(tst_regionList)
-    return tst_regionList
-
-def setMidRegion(driverNum,shape):
-    if driverNum> min(shape):
-        print("wrong driver number")
-        midRegion = list()
-    else:
-        maxDispose = (math.ceil(driverNum**(1/2)))
-        if driverNum%maxDispose==0:
-            minDispose = driverNum/maxDispose
-        else:
-            minDispose = math.trunc(driverNum**(1/2))
-        maxInterval = max(shape)//maxDispose
-        minInterval = min(shape)//minDispose
-
-        maxIndex = shape.index(max(shape))
-        maxCord = list()
-        minDisposeMinCord = list()
-        maxDisposeMinCord = list()
-
-        for i in range(maxDispose):
-            maxCord.append(maxInterval//2 + maxInterval*(i))
-        for i in range(maxDispose):
-            maxDisposeMinCord.append((min(shape)//maxDispose)//2 + (min(shape)//maxDispose)*(i))
-        for i in range(int(minDispose)):
-            minDisposeMinCord.append(minInterval//2 + minInterval*(i))
-
-        maxDisposeNum = driverNum%maxDispose
-
-        midRegion = list()
-        count = 0
-        if maxIndex==0:
-            for i in range(maxDisposeNum):
-                for j in range(maxDispose):
-                    midRegion.append((maxCord[i],int(maxDisposeMinCord[j])))
-            for i in range(maxDispose-maxDisposeNum):
-                for j in range(int(minDispose)):
-                    midRegion.append((maxCord[maxDispose-i-1],int(minDisposeMinCord[j])))
-        else:
-            print("max index is y")
-
-    return midRegion
 
 def setdriver_region(driver,midRegion):
     min_x=7
@@ -124,9 +76,9 @@ def change_region(new_driver,before_driver,target_x,target_y):
 
 if __name__ == '__main__':
     print("distribution code")
-    tst_regionList = getRegion_test(100)
+    tst_regionList = dst.getRegion_test(100)
     driver=5
-    midRegion = setMidRegion(5,tst_regionList.shape)
+    midRegion = dst.setMidRegion(5,tst_regionList.shape)
     d1 = [int(midRegion[0][0]), int(midRegion[0][1])]
     d2 = [int(midRegion[1][0]), int(midRegion[1][1])]
     d3 = [int(midRegion[2][0]), int(midRegion[2][1])]
