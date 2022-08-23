@@ -352,7 +352,7 @@ def main_algorithm(region_difficulty,region_driver,driver_num,bounds):
                 if detect_isolation_in2(region_driver,input_block[0],input_block[1]) == 1:   
                     region_driver[input_block[0]][input_block[1]] = origin_driver
 
-            if driver_check == 4:
+            if driver_check == driver_num:
                 check = 1     
         if count > 10:
             return region_driver
@@ -380,7 +380,7 @@ if __name__ == '__main__':
     print("distribution code")
     tst_regionList = dst.getRegion()
     #tst_regionList = dst.getRegion_test(20)
-    driver=3
+    driver=5
 
 
     midRegion = dst.setMidRegion(driver,tst_regionList.shape)
@@ -393,14 +393,14 @@ if __name__ == '__main__':
     region_driver = set_driver_region(tst_regionList.shape,midRegion)
     #pprint(region_driver)
 
-    final_result = main_algorithm(tst_regionList, region_driver, driver, 0.05)
+    final_result = main_algorithm(tst_regionList, region_driver, driver, 0.03)
 
 
     for i in final_result :
         for j in i:
             print(j,end=" | ")
         print()
-        print("------------------------------")
+        print("---------------------------")
 
     for i in range(0,driver): 
         diff = driver_difficulty_sum(region_driver,tst_regionList,driver)[i]
