@@ -14,15 +14,16 @@
 ### 시스템 아키텍처
 
 - 시스템 개요
+    ![image](https://user-images.githubusercontent.com/90433400/186234217-44a4bb6a-b01e-407d-936d-3835131b487c.png)
+
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/46c14dd3-2ee4-4e8b-82bd-7d3e026e7ed1/Untitled.png)
     
 - 시스템 흐름도
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6c1b5a58-363e-4957-8e1f-23de7fc0e84b/Untitled.png)
+    ![image](https://user-images.githubusercontent.com/90433400/186234270-ce6de257-f475-497a-955b-12433ae89ec8.png)
     
 ### 결과물
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6665211d-f559-4465-bf2b-830202b89497/Untitled.png)
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f1044b1e-e5b0-4d1b-a1fc-d660a972a2e5/Untitled.png)
+- 알고리즘
+![image](https://user-images.githubusercontent.com/90433400/186234309-b9f41e6c-875e-47a3-a4f9-4ca37c580d4d.png)
+- 웹
+ ![image](https://user-images.githubusercontent.com/90433400/186234378-7d10e67a-60c5-4a9d-8a27-502598eeb19d.png)
