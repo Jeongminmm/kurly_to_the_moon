@@ -10,6 +10,8 @@
  차동근(Konkuk univ. Smart Vehicle Engineering)
  
  홍동원(Konkuk univ. Smart Vehicle Engineering)
+ 
+#배송기사 과로, 부하 편중 방지 및 배송 최적화를 위한 솔루션
 
 ### 시스템 아키텍처
 
