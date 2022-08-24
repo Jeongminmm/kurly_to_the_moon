@@ -380,7 +380,7 @@ if __name__ == '__main__':
     print("distribution code")
     tst_regionList = dst.getRegion()
     #tst_regionList = dst.getRegion_test(20)
-    driver=5
+    driver=3
 
 
     midRegion = dst.setMidRegion(driver,tst_regionList.shape)
@@ -393,7 +393,7 @@ if __name__ == '__main__':
     region_driver = set_driver_region(tst_regionList.shape,midRegion)
     #pprint(region_driver)
 
-    final_result = main_algorithm(tst_regionList, region_driver, driver, 0.03)
+    final_result = main_algorithm(tst_regionList, region_driver, driver, 0.06)
 
 
     for i in final_result :
