@@ -393,7 +393,7 @@ if __name__ == '__main__':
     region_driver = set_driver_region(tst_regionList.shape,midRegion)
     #pprint(region_driver)
 
-    final_result = main_algorithm(tst_regionList, region_driver, driver, 0.06)
+    final_result = main_algorithm(tst_regionList, region_driver, driver, 0.03)
 
 
     for i in final_result :
