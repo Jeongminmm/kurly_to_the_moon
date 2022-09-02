@@ -1,5 +1,5 @@
 # kurly_to_the_moon
- ## Kurly HACK FESTA2022  
+ ## Kurly HACK FESTA2022 최종 결선 진출(12팀)
  ### team : kurly to the mooon
  ### 구성원
  
